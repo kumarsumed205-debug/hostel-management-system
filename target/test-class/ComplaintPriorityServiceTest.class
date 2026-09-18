@@ -1,0 +1,29 @@
+// Source code is decompiled from a .class file using FernFlower decompiler (from Intellij IDEA).
+package com.smarthostel;
+
+import com.smarthostel.service.ComplaintPriorityService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+class ComplaintPriorityServiceTest {
+   private final ComplaintPriorityService service = new ComplaintPriorityService();
+
+   ComplaintPriorityServiceTest() {
+   }
+
+   @Test
+   void electricalIsHigh() {
+      Assertions.assertEquals("HIGH", this.service.calculatePriority("Electrical", "Low"));
+   }
+
+   @Test
+   void cleaningIsLowWhenSeverityIsLow() {
+      Assertions.assertEquals("LOW", this.service.calculatePriority("Cleaning", "Low"));
+   }
+
+   @Test
+   void highSeverityOverridesCategory() {
+      Assertions.assertEquals("HIGH", this.service.calculatePriority("Cleaning", "High"));
+   }
+}
+
